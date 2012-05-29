@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">KitchenTimer</string>
+    <string name="start">Start</string>
+    <string name="reset">Reset</string>
+    <string name="minute">Minute</string>
+    <string name="hour">Hour</string>
+    <string name="second">Second</string>
+
+</resources>
