@@ -29,7 +29,7 @@ public class KitchenTimerActivity extends Activity implements
 
 	private void setupView() {
 		mHour = (EditText) findViewById(R.id.hour);
-		mMinute = (EditText) findViewById(R.id.minuite);
+		mMinute = (EditText) findViewById(R.id.minute);
 		mSecond = (EditText) findViewById(R.id.second);
 		mStart = (Button) findViewById(R.id.btn_start);
 		mReset = (Button) findViewById(R.id.btn_reset);

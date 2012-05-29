@@ -30,7 +30,7 @@
             android:inputType="number"
             android:maxLength="2"
             android:minEms="2"
-            android:nextFocusDown="@+id/minuite"
+            android:nextFocusDown="@+id/minute"
             android:singleLine="true" >
 
             <requestFocus />
@@ -38,7 +38,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/minuite_layout"
+        android:id="@+id/minute_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -47,14 +47,14 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/label_minuite"
+            android:id="@+id/label_minute"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/minute"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <EditText
-            android:id="@+id/minuite"
+            android:id="@+id/minute"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
