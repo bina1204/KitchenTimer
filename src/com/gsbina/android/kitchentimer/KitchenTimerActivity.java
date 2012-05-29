@@ -2,6 +2,7 @@ package com.gsbina.android.kitchentimer;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,9 +29,13 @@ public class KitchenTimerActivity extends Activity implements
 	}
 
 	private void setupView() {
+		InputFilter[] filters = new InputFilter[] { new SexagesimalFilter() };
+
 		mHour = (EditText) findViewById(R.id.hour);
 		mMinute = (EditText) findViewById(R.id.minute);
+		mMinute.setFilters(filters);
 		mSecond = (EditText) findViewById(R.id.second);
+		mSecond.setFilters(filters);
 		mStart = (Button) findViewById(R.id.btn_start);
 		mReset = (Button) findViewById(R.id.btn_reset);
 
