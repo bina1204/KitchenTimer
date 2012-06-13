@@ -3,58 +3,45 @@ package com.gsbina.android.kitchentimer;
 import java.util.concurrent.TimeUnit;
 
 import android.os.CountDownTimer;
-import android.util.Log;
 
 public class KitchenTimer extends CountDownTimer {
 
 	private static final long CD_INTERVAL = TimeUnit.MILLISECONDS.toMillis(100);
-	private int mSecondInterval = 0;
 
 	private KitchenTimerController mController;
 	private final int mSetHour;
 	private final int mSetMinute;
 	private final int mSetSecond;
-	private int mHour;
-	private int mMinute;
-	private int mSecond;
 
-	public KitchenTimer(KitchenTimerController controller, int hour, int minute,
-			int second) {
+	public KitchenTimer(KitchenTimerController controller, int hour,
+			int minute, int second) {
 		super(TimeUnit.HOURS.toMillis(hour) + TimeUnit.MINUTES.toMillis(minute)
 				+ TimeUnit.SECONDS.toMillis(second), CD_INTERVAL);
 		mController = controller;
-		mSetHour = mHour = hour;
-		mSetMinute = mMinute = minute;
-		mSetSecond = mSecond = second;
+		mSetHour = hour;
+		mSetMinute = minute;
+		mSetSecond = second;
 
-		mController.updateTime(mHour, mMinute, mSecond);
+		mController.updateTime(mSetHour, mSetMinute, mSetSecond);
 	}
 
 	@Override
 	public void onFinish() {
-		// TODO èIóπ
 		mController.finishTime();
 	}
 
 	@Override
 	public void onTick(long millisUntilFinished) {
-		if (++mSecondInterval < 10) {
-			Log.d("kt", "time : " + millisUntilFinished);
-			return;
-		}
+		// 1ïbñ¢ñûÇÕåJÇËè„Ç∞Çƒï\é¶Ç∑ÇÈÇΩÇﬂÅA1000ms â¡éZÇ∑ÇÈ
+		millisUntilFinished += 1000;
 
-		mSecondInterval = 0;
-
-		Log.d("KitchenTimer", "time : " + millisUntilFinished);
-		if (--mSecond < 0 && (mMinute > 0 || mHour > 0)) {
-			mSecond = 59;
-			if (--mMinute < 0 && mHour > 0) {
-				mMinute = 59;
-				--mHour;
-			}
-		}
-
-		mController.updateTime(mHour, mMinute, mSecond);
+		long seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished);
+		int hour = (int) (seconds / 3600);
+		seconds %= 3600;
+		int minute = (int) (seconds / 60);
+		seconds %= 60;
+		int second = (int) seconds;
+		mController.updateTime(hour, minute, second);
 	}
 
 	public void reset() {
